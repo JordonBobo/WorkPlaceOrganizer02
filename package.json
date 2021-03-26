@@ -1,0 +1,28 @@
+{
+  "name": "WorkPlaceOrganizer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JordonBobo/WorkPlaceOrganizer.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JordonBobo/WorkPlaceOrganizer/issues"
+  },
+  "homepage": "https://github.com/JordonBobo/WorkPlaceOrganizer#readme",
+  "dependencies": {
+    "console.table": "^0.10.0",
+    "inquirer": "^8.0.0",
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {
+    "jest": "^26.6.3"
+  }
+}
