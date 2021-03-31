@@ -12,7 +12,7 @@
 7. [Contact info](#Questions?)
 
 ### description
-This App takes in employee information and generates an HTML document that publishes employee info.
+This App interacts with a locally storred database and can display, add, modify, and delete information in that database.
 
 Video Demo of the app:
 https://drive.google.com/file/d/1aoqvdp04pPem9MHlj0VRSYKLYZe_tMPR/view 
