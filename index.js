@@ -64,7 +64,7 @@ const viewEmployee = () => {
     .prompt({
       name: 'viewEmployee',
       type: 'input',
-      message: 'What employee would you like to view? Search by ID',
+      message: 'What is the ID of the employee you would like to view?',
     })
     .then((answer) => {
       viewEmp(answer.viewEmployee)
@@ -72,10 +72,11 @@ const viewEmployee = () => {
 };
 employee = '';
 function viewEmp(employee) {
-  let query = "SELECT employee.firstName, employee.lastName, department.departmentName, role.title, role.salary FROM employee INNER JOIN department ON employee.department_id = department.id INNER JOIN role ON employee.role_id = role.id where employee.id = ?"
+  let query = "SELECT employee.id, employee.firstName, employee.lastName, department.departmentName, role.title, role.salary FROM employee LEFT JOIN department ON employee.department_id = department.id INNER JOIN role ON employee.role_id = role.id where employee.id = ?"
   connection.query(query, [employee], (err, res) => {
     if (err) throw err;
     console.table(res)
+    process.exit()
   })
 }
 
@@ -85,7 +86,7 @@ const viewDepartment = () => {
     .prompt({
       name: 'viewDepartment',
       type: 'input',
-      message: 'What department would you like to view? Search by department name',
+      message: 'What is the name of the department you would like to view?',
     })
     .then((answer) => {
       viewDept(answer.viewDepartment)
@@ -94,10 +95,11 @@ const viewDepartment = () => {
 
 department= ''
 function viewDept(department) {
-  let query = "SELECT department.departmentName, employee.firstName, employee.lastName FROM employee INNER JOIN department ON employee.department_id = department.id WHERE department.departmentName = ?"
+  let query = "SELECT department.departmentName, employee.id, employee.firstName, employee.lastName FROM employee LEFT JOIN department ON employee.department_id = department.id WHERE department.departmentName = ?"
   connection.query(query, [department], (err, res) => {
     if (err) throw err;
     console.table(res)
+    process.exit()
   })
 }
 
@@ -106,7 +108,7 @@ const viewRole = () => {
     .prompt({
       name: 'viewRole',
       type: 'input',
-      message: 'What role would you like to view? Search by role title',
+      message: 'What is the title of the role you would like to view?',
     })
     .then((answer) => {
       theRole(answer.viewRole)
@@ -118,13 +120,15 @@ function theRole(role) {
   connection.query(query, [role], (err, res) => {
     if (err) throw err;
     console.table(res)
+    process.exit()
   })
 }
 
 
 async function viewAll() {
-  let x = await connection.query('SELECT employee.firstName, employee.lastName, department.departmentName, role.title, role.salary FROM employee INNER JOIN department ON employee.department_id = department.id INNER JOIN role ON employee.role_id = role.id')
+  let x = await connection.query('SELECT employee.id, employee.firstName, employee.lastName, department.departmentName, role.title, role.salary FROM employee LEFT JOIN department ON employee.department_id = department.id INNER JOIN role ON employee.role_id = role.id')
   console.table(x)
+  process.exit()
   // console.log(x)
 }
 
@@ -188,6 +192,7 @@ function newE(newE2, newE3,newE4,newE5) {
     if (err) throw err;
     // console.table(res)
     console.log("Done")
+    process.exit()
   })
 }
 
@@ -215,6 +220,7 @@ function newR(newR1, newR2) {
     if (err) throw err;
     // console.table(res)
     console.log("Done")
+    process.exit()
   })
 }
 
@@ -236,6 +242,7 @@ function newD(newD1) {
     if (err) throw err;
     // console.table(res)
     console.log("Done")
+    process.exit()
   })
 }
 
@@ -285,6 +292,7 @@ function newER(newER1, newER2) {
     if (err) throw err;
     // console.table(res)
     console.log("Done")
+    process.exit()
   })
 }
 
@@ -312,6 +320,7 @@ function newED(newED1, newED2) {
     if (err) throw err;
     // console.table(res)
     console.log("Done")
+    process.exit()
   })
 }
 
@@ -345,6 +354,7 @@ function newEN(newEN1, newEN2, newEN3) {
     if (err) throw err;
     // console.table(res)
     console.log("Done")
+    process.exit()
   })
 }
 
@@ -372,6 +382,7 @@ function newRS(newRS1, newRS2) {
     if (err) throw err;
     // console.table(res)
     console.log("Done")
+    process.exit()
   })
 }
 
@@ -414,6 +425,7 @@ function deleteE(deleteE1) {
     if (err) throw err;
     // console.table(res)
     console.log("Done")
+    process.exit()
   })
 }
 
@@ -435,6 +447,7 @@ function deleteD(deleteD1) {
     if (err) throw err;
     // console.table(res)
     console.log("Done")
+    process.exit()
   })
 }
 
@@ -456,6 +469,7 @@ function deleteR(deleteR1) {
     if (err) throw err;
     // console.table(res)
     console.log("Done")
+    process.exit()
   })
 }
 
